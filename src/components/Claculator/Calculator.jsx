@@ -44,3 +44,33 @@ const reducer = (state, action) => {
       return state;
   }
 };
+
+const Calculator = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const handleNumber = (e) => {
+    dispatch({ type: "SET_NUMBER", payload: Number(e.target.value) });
+    dispatch({ type: "SET_INPUT", payload: e.target.value });
+  };
+
+  return (
+    <div className="calculator-container">
+      <input type="number" value={state.inputValue} onChange={handleNumber} />
+      <button onClick={() => dispatch({ type: "SET_OPERATION", payload: "+" })}>➕</button>
+      <button onClick={() => dispatch({ type: "SET_OPERATION", payload: "-" })}>➖</button>
+      <button onClick={() => dispatch({ type: "SET_OPERATION", payload: "*" })}>✖️</button>
+      <button onClick={() => dispatch({ type: "SET_OPERATION", payload: "/" })}>➗</button>
+      <button onClick={() => dispatch({ type: "SET_OPERATION", payload: "%" })}>%</button>
+      <button onClick={() => dispatch({ type: "SET_RESULT" })}>🟰</button>
+
+      <p>Último resultado: {state.result}</p>
+      <ul>
+        {state.numRecord.map((num, index) => (
+          <li key={index}>{num}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default Calculator;
