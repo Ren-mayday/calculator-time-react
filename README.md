@@ -1,16 +1,76 @@
-# React + Vite
+# Advanced React Hooks – Practice Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small React project built with Vite to practice advanced React hooks such as `useReducer`, `useEffect`, `useState`, and custom hooks.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Overview
 
-## React Compiler
+This app consists of two components:
+- A **Timer** that displays the current time updated every second.
+- A **Calculator** that handles basic math operations using `useReducer`.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- Vite
+- JavaScript (ES6+)
+
+---
+
+## Project Structure
+```
+src/
+├── components/
+│   ├── Calculator/
+│   │   └── Calculator.jsx
+│   └── Timer/
+│       └── Timer.jsx
+├── customHooks/
+│   └── useActualDate.jsx
+├── App.css
+├── App.jsx
+├── index.css
+└── main.jsx
+```
+
+---
+
+## Features
+
+### Timer
+- Uses the custom hook `useActualDate` to get the current date.
+- Displays the current time formatted with `.toLocaleTimeString()`.
+- Updates every second using `setInterval`.
+
+### Calculator
+- Supports addition, subtraction, multiplication, division and percentage.
+- Manages all state with `useReducer`.
+- Keeps a record of previous results.
+
+---
+
+## React Hooks Used
+
+| Hook | Where | Purpose |
+|------|-------|---------|
+| `useState` | `useActualDate.jsx` | Stores the current date object |
+| `useEffect` | `useActualDate.jsx` | Sets up and cleans up the `setInterval` |
+| `useReducer` | `Calculator.jsx` | Manages all calculator state and logic |
+| `useActualDate` *(custom)* | `App.jsx` | Abstracts date/time logic into a reusable hook |
+
+---
+
+## Getting Started
+```bash
+npm install
+npm run dev
+```
+
+---
+
+## Author 
+
+Made by [https://github.com/Ren-mayday]
